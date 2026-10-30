@@ -1,11 +1,5 @@
- Experiment 2
-## Parallel Programming with POSIX Threads (Pthreads) and OpenMP: Concurrency, Synchronization, and Performance Benchmarking
+ # Experiment 2:-Multithreaded_Pthread_OpenMp
 
-[![Language: C](https://img.shields.io/badge/Language-C-00599C.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Compiler: GCC](https://img.shields.io/badge/Compiler-GCC%2015.2.0-yellow.svg)](https://gcc.gnu.org/)
-[![API: Pthreads](https://img.shields.io/badge/Standard-POSIX%20Threads-green.svg)](https://man7.org/linux/man-pages/man7/pthreads.7.html)
-[![API: OpenMP](https://img.shields.io/badge/Library-OpenMP-blue.svg)](https://www.openmp.org/)
-[![Environment: Linux / WSL](https://img.shields.io/badge/Platform-WSL%20Ubuntu-orange.svg)](https://ubuntu.com/wsl)
 
 ---
 
@@ -29,8 +23,7 @@
   - [Step 12: Pthreads Scalability Benchmarking (`pthread_perf.c`)](#step-12-pthreads-scalability-benchmarking-pthread_perfc)
   - [Step 13: OpenMP Scalability Benchmarking (`omp_perf.c`)](#step-13-openmp-scalability-benchmarking-omp_perfc)
 - [6. Results & Performance Comparison](#6-results--performance-comparison)
-- [7. How to Compile and Run](#7-how-to-compile-and-run)
-- [8. Repository Directory Structure](#8-repository-directory-structure)
+- [7. Repository Directory Structure](#7-repository-directory-structure)
 
 ---
 
@@ -383,8 +376,7 @@ gcc omp_perf.c -o omp_perf -fopenmp
 
 ## 6. Results & Performance Comparison
 
-### Multi-Core Scaling Dashboard
-![Multi-Core Scaling Dashboard](results/graphs/combined_scaling_dashboard.png)
+
 
 ### Benchmark Comparison Table
 
@@ -400,9 +392,13 @@ gcc omp_perf.c -o omp_perf -fopenmp
 
 <div align="center">
 
-| Execution Runtime Comparison | Parallel Speedup vs Ideal |
-|:---:|:---:|
-| ![Execution Time](results/graphs/execution_time_comparison.png) | ![Speedup Comparison](results/graphs/speedup_comparison.png) |
+| Execution Runtime Comparison | 
+|:---:|
+| ![Execution Time](results/graphs/execution_time_comparison.png) | 
+
+| Parallel Speedup vs Ideal |
+|:---:|
+| ![Speedup Comparison](results/graphs/speedup_comparison.png) |
 
 | Parallel Efficiency (%) |
 |:---:|
@@ -415,51 +411,13 @@ gcc omp_perf.c -o omp_perf -fopenmp
 2. **Amdahl's Law and SMT Overhead:** At $16$ threads, parallel speedup approaches $9.85\times$ (~$0.140$s runtime) with an efficiency of ~$61\%$, attributed to physical CPU core saturation, hyperthreading memory bus contention, and synchronization overhead.
 3. **Pthreads vs OpenMP:** Both programming models perform identically well, while OpenMP significantly reduces development effort and source code verbosity.
 
-> For the comprehensive benchmark breakdown and CSV data, refer to [`results/benchmark_analysis.md`](results/benchmark_analysis.md), [`results/performance_data.csv`](results/performance_data.csv), and the graph script [`results/graphs/generate_graphs.py`](results/graphs/generate_graphs.py).
 
 ---
 
-## 7. How to Compile and Run
-
-### Option A: Using the Automated Makefile
-```bash
-# Compile all programs across all sections into bin/
-make all
-
-# Or compile individual sections
-make section1
-make section2
-make section3
-
-# Clean all binaries
-make clean
-```
-
-### Option B: Compiling Programs Individually
-```bash
-# Section 1 (Pthreads)
-gcc src/section1_pthreads/thread1.c -o thread1 -pthread
-gcc src/section1_pthreads/thread2.c -o thread2 -pthread
-gcc src/section1_pthreads/thread_sum.c -o thread_sum -pthread
-gcc src/section1_pthreads/race.c -o race -pthread
-gcc src/section1_pthreads/mutex.c -o mutex -pthread
-
-# Section 2 (OpenMP)
-gcc src/section2_openmp/omp1.c -o omp1 -fopenmp
-gcc src/section2_openmp/omp_sum.c -o omp_sum -fopenmp
-gcc src/section2_openmp/omp_race.c -o omp_race -fopenmp
-gcc src/section2_openmp/omp_critical.c -o omp_critical -fopenmp
-gcc src/section2_openmp/omp_barrier.c -o omp_barrier -fopenmp
-
-# Section 3 (Performance Benchmarking)
-gcc src/section3_performance/sequential.c -o sequential_program
-gcc src/section3_performance/pthread_perf.c -o pthread_perf -pthread
-gcc src/section3_performance/omp_perf.c -o omp_perf -fopenmp
-```
 
 ---
 
-## 8. Repository Directory Structure
+## 7. Repository Directory Structure
 
 ```
 PGC-Experiment-2/
