@@ -383,6 +383,9 @@ gcc omp_perf.c -o omp_perf -fopenmp
 
 ## 6. Results & Performance Comparison
 
+### Multi-Core Scaling Dashboard
+![Multi-Core Scaling Dashboard](results/graphs/combined_scaling_dashboard.png)
+
 ### Benchmark Comparison Table
 
 | Threads ($p$) | Sequential Time ($T_s$) | Pthreads Time ($T_p$) | Pthreads Speedup ($S_p$) | Pthreads Efficiency ($E_p$) | OpenMP Time ($T_{omp}$) | OpenMP Speedup ($S_{omp}$) | OpenMP Efficiency ($E_{omp}$) |
@@ -393,12 +396,26 @@ gcc omp_perf.c -o omp_perf -fopenmp
 | **6** | 1.385656 s | 0.241560 s | 5.74x | 95.6% | 0.241392 s | 5.74x | 95.7% |
 | **16** | 1.385656 s | 0.143211 s | 9.68x | 60.5% | 0.140732 s | 9.85x | 61.5% |
 
+### Performance Visualization & Analysis
+
+<div align="center">
+
+| Execution Runtime Comparison | Parallel Speedup vs Ideal |
+|:---:|:---:|
+| ![Execution Time](results/graphs/execution_time_comparison.png) | ![Speedup Comparison](results/graphs/speedup_comparison.png) |
+
+| Parallel Efficiency (%) |
+|:---:|
+| ![Efficiency Comparison](results/graphs/efficiency_comparison.png) |
+
+</div>
+
 ### Key Observations
 1. **Linear Speedup:** Threads from $1$ to $6$ exhibit near-ideal linear scaling (~$96\%$ efficiency) with speedups reaching $5.74\times$.
 2. **Amdahl's Law and SMT Overhead:** At $16$ threads, parallel speedup approaches $9.85\times$ (~$0.140$s runtime) with an efficiency of ~$61\%$, attributed to physical CPU core saturation, hyperthreading memory bus contention, and synchronization overhead.
 3. **Pthreads vs OpenMP:** Both programming models perform identically well, while OpenMP significantly reduces development effort and source code verbosity.
 
-> For the comprehensive benchmark breakdown and CSV data, refer to [`results/benchmark_analysis.md`](results/benchmark_analysis.md) and [`results/performance_data.csv`](results/performance_data.csv).
+> For the comprehensive benchmark breakdown and CSV data, refer to [`results/benchmark_analysis.md`](results/benchmark_analysis.md), [`results/performance_data.csv`](results/performance_data.csv), and the graph script [`results/graphs/generate_graphs.py`](results/graphs/generate_graphs.py).
 
 ---
 
@@ -448,11 +465,17 @@ gcc src/section3_performance/omp_perf.c -o omp_perf -fopenmp
 PGC-Experiment-2/
 ├── .gitignore                          # C compilation and IDE ignore rules
 ├── Makefile                            # Automated build configuration
-├── README.md                           # Lab documentation with steps and screenshots
+├── README.md                           # Lab documentation with steps, screenshots & graphs
 ├── results/
 │   ├── benchmark_analysis.md           # Speedup and efficiency scalability analysis
-│   └── performance_data.csv            # Tabular benchmark metrics
-├── ss/                                 # Experiment screenshots
+│   ├── performance_data.csv            # Tabular benchmark metrics
+│   └── graphs/                         # Generated benchmark performance plots
+│       ├── combined_scaling_dashboard.png
+│       ├── execution_time_comparison.png
+│       ├── speedup_comparison.png
+│       ├── efficiency_comparison.png
+│       └── generate_graphs.py          # Python script to reproduce plots
+├── ss/                                 # Standardized experiment screenshots
 │   ├── 01_environment_setup.png
 │   ├── 02_pthreads_thread1.png
 │   ├── 03_pthreads_thread2.png

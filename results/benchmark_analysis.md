@@ -23,7 +23,25 @@ This report documents the performance evaluation conducted for **Experiment 2: P
 
 ---
 
-## 3. Metrics and Formulas
+## 3. Graphical Visualizations
+
+### Multi-Core Scaling Dashboard
+![Multi-Core Scaling Dashboard](graphs/combined_scaling_dashboard.png)
+
+### Individual Metric Breakdown
+| Execution Runtime Comparison | Parallel Speedup vs Ideal |
+|:---:|:---:|
+| ![Execution Time](graphs/execution_time_comparison.png) | ![Speedup Comparison](graphs/speedup_comparison.png) |
+
+| Parallel Efficiency (%) |
+|:---:|
+| ![Efficiency Comparison](graphs/efficiency_comparison.png) |
+
+> Graph Generation Script: [`graphs/generate_graphs.py`](graphs/generate_graphs.py)
+
+---
+
+## 4. Metrics and Formulas
 
 1. **Speedup ($S$):**
    $$S = \frac{T_s}{T_p}$$
@@ -35,7 +53,7 @@ This report documents the performance evaluation conducted for **Experiment 2: P
 
 ---
 
-## 4. Key Observations & Inferences
+## 5. Key Observations & Inferences
 
 1. **Near-Linear Scaling (1 to 6 Threads):**
    - Both Pthreads and OpenMP exhibit outstanding parallel efficiency (>95%) scaling almost linearly from 1 to 6 threads.
