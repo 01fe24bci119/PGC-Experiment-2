@@ -1,4 +1,4 @@
-# Parallel and Grid Computing (PGC) - Experiment 2
+ Experiment 2
 ## Parallel Programming with POSIX Threads (Pthreads) and OpenMP: Concurrency, Synchronization, and Performance Benchmarking
 
 [![Language: C](https://img.shields.io/badge/Language-C-00599C.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
